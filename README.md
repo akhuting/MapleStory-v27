@@ -1,0 +1,2 @@
+# maplestory
+for chinese maplestory
