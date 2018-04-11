@@ -4026,11 +4026,11 @@ public class MaplePacketCreator {
 
         mplew.write(SendPacketOpcode.CAPTURE_FLAGS.getValue());
         mplew.writeRect(map.getArea(0));
-        mplew.writeInt(((Point) map.getGuardians().get(0).left).x);
-        mplew.writeInt(((Point) map.getGuardians().get(0).left).y);
+        mplew.writeInt(map.getGuardians().get(0).left.x);
+        mplew.writeInt(map.getGuardians().get(0).left.y);
         mplew.writeRect(map.getArea(1));
-        mplew.writeInt(((Point) map.getGuardians().get(1).left).x);
-        mplew.writeInt(((Point) map.getGuardians().get(1).left).y);
+        mplew.writeInt(map.getGuardians().get(1).left.x);
+        mplew.writeInt(map.getGuardians().get(1).left.y);
         return mplew.getPacket();
     }
 

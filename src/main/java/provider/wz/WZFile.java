@@ -59,7 +59,7 @@ public class WZFile implements MapleDataProvider {
         load();
     }
 
-    private void load() throws IOException {
+    private void load() {
         lea.readAsciiString(4);
         lea.readInt();
         lea.readInt();

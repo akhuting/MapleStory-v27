@@ -1813,7 +1813,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                     return -1;
                 }
 
-                ps = con.prepareStatement(new StringBuilder().append("UPDATE bank SET money =money+ ").append(money).append(" WHERE charid = ").append(cid).append("").toString());
+                ps = con.prepareStatement(new StringBuilder().append("UPDATE bank SET money =money+ ").append(money).append(" WHERE charid = ").append(cid).toString());
                 return ps.executeUpdate();
             }
             ps.close();

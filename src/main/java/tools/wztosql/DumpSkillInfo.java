@@ -25,7 +25,7 @@ public class DumpSkillInfo {
     public static List<Pair<Integer, Character>> a = new LinkedList();
     public static List<Character> b = new LinkedList();
 
-    public void dumpSkill() throws Exception {
+    public void dumpSkill() {
         for (MapleData data : skillInfoData.getChildren()) {
             if (data.getName().length() <= 4) {
                 for (MapleData jobSkill : data.getChildren()) {

@@ -27,7 +27,7 @@ public class CharacterIdChannelPair implements Externalizable, Comparable<Charac
     }
 
     @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput in) throws IOException {
         this.charid = in.readInt();
         this.channel = in.readByte();
     }

@@ -101,7 +101,7 @@ public class ManagerSin extends javax.swing.JFrame {
         return drop[i];
     }
 
-    public void initInformation(ResultSet sqlItemData) throws SQLException {
+    public void initInformation(ResultSet sqlItemData) {
         /*this.id = sqlItemData.getInt("id");
          this.name = sqlItemData.getInt("name");
          this.pasw = sqlItemData.getString("password");

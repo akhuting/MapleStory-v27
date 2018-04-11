@@ -58,7 +58,7 @@ public class DumpItems {
     protected int id = 0;
     private final Connection con = DatabaseConnection.getConnection();
 
-    public DumpItems(boolean update) throws Exception {
+    public DumpItems(boolean update) {
         this.update = update;
         this.item = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath", "wz") + "/Item.wz"));
         this.character = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath", "wz") + "/Character.wz"));

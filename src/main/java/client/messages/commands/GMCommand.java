@@ -872,7 +872,6 @@ public class GMCommand {
             if (splitted[tfrom].equals("nv")) {
                 sb.append("[公告事项]");
             } else {
-                sb.append("");
             }
             joinmod += tfrom;
             sb.append(StringUtil.joinStringFrom(splitted, joinmod));

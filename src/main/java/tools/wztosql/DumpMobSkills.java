@@ -43,7 +43,7 @@ public class DumpMobSkills {
     protected int id = 0;
     private final Connection con = DatabaseConnection.getConnection();
 
-    public DumpMobSkills(boolean update) throws Exception {
+    public DumpMobSkills(boolean update) {
         this.update = update;
         this.skill = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath", "wz") + "/Skill.wz"));
         if (skill == null) {

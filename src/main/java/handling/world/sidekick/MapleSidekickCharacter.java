@@ -77,14 +77,9 @@
       }
       MapleSidekickCharacter other = (MapleSidekickCharacter)obj;
       if (this.name == null) {
-        if (other.name != null) {
-            return false;
-        }
+          return other.name == null;
       }
-      else if (!this.name.equals(other.name)) {
-       return false;
-      }
-     return true;
+      else return this.name.equals(other.name);
     }
   }
 

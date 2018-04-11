@@ -55,12 +55,7 @@ public class Pair<E, F> implements Serializable {
             return false;
         }
         if (this.right == null) {
-            if (other.right != null) {
-                return false;
-            }
-        } else if (!this.right.equals(other.right)) {
-            return false;
-        }
-        return true;
+            return other.right == null;
+        } else return this.right.equals(other.right);
     }
 }

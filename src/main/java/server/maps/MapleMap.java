@@ -3489,7 +3489,7 @@ public final class MapleMap {
     }
 
     public boolean makeCarnivalReactor(int team, int num) {
-        MapleReactor old = getReactorByName(new StringBuilder().append(team).append("").append(num).toString());
+        MapleReactor old = getReactorByName(new StringBuilder().append(team).append(num).toString());
         if ((old != null) && (old.getState() < 5)) {
             return false;
         }
@@ -3514,7 +3514,7 @@ public final class MapleMap {
         if (guardz != null) {
             MapleReactor my = new MapleReactor(MapleReactorFactory.getReactor(9980000 + team), 9980000 + team);
             my.setState((byte) 1);
-            my.setName(new StringBuilder().append(team).append("").append(num).toString());
+            my.setName(new StringBuilder().append(team).append(num).toString());
 
             spawnReactorOnGroundBelow(my, guardz);
             skil = MapleCarnivalFactory.getInstance().getGuardian(num);

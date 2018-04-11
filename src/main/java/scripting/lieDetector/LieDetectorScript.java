@@ -45,7 +45,7 @@ public class LieDetectorScript {
         return null;
     }
 
-    public static byte[] getBytesFromFile(File file) throws IOException {
+    public static byte[] getBytesFromFile(File file) {
         byte[] bytes;
         try {
             InputStream is = new FileInputStream(file);

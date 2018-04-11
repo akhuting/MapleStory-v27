@@ -19,8 +19,7 @@ public class ByteArrayByteStream implements SeekableInputStreamBytestream {
     }
 
     @Override
-    public void seek(long offset)
-            throws IOException {
+    public void seek(long offset) {
         this.pos = (int) offset;
     }
 

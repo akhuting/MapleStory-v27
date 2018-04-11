@@ -16,12 +16,12 @@ public class MapleCodecFactory implements ProtocolCodecFactory {
     }
 
     @Override
-    public ProtocolEncoder getEncoder(IoSession session) throws Exception {
+    public ProtocolEncoder getEncoder(IoSession session) {
         return encoder;
     }
 
     @Override
-    public ProtocolDecoder getDecoder(IoSession session) throws Exception {
+    public ProtocolDecoder getDecoder(IoSession session) {
         return decoder;
     }
 }

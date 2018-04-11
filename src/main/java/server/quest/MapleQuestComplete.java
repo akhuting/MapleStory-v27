@@ -26,9 +26,8 @@ public class MapleQuestComplete implements Serializable {
     /**
      * 任务的必要条件
      * @param type
-     * @throws SQLException
      */
-    public MapleQuestComplete(MapleQuestCompleteType type, int itemId,int num) throws SQLException {
+    public MapleQuestComplete(MapleQuestCompleteType type, int itemId,int num) {
         this.type = type;
         if (type == MapleQuestCompleteType.item) {
             this.dataStore.add(new Pair(itemId,num));

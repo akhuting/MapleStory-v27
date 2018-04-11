@@ -48,9 +48,7 @@ public class ItemActionManager extends NPCConversationManager {
                 return false;
             }
             int a = c.getPlayer().getSkillLevel(CurrSkillData);
-            if ((c.getPlayer().getSkillLevel(CurrSkillData) >= 5 && masterLevel == 20) || (c.getPlayer().getSkillLevel(CurrSkillData) >= 15 && masterLevel == 30)) {
-                return true;
-            }
+            return (c.getPlayer().getSkillLevel(CurrSkillData) >= 5 && masterLevel == 20) || (c.getPlayer().getSkillLevel(CurrSkillData) >= 15 && masterLevel == 30);
         }
         return false;
     }

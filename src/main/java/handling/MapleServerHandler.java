@@ -51,7 +51,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
     }
 
     @Override
-    public void sessionCreated(IoSession session) throws Exception {
+    public void sessionCreated(IoSession session) {
         SocketSessionConfig cfg = (SocketSessionConfig) session.getConfig();
         cfg.setReceiveBufferSize(2 * 1024 * 1024);
         cfg.setReadBufferSize(2 * 1024 * 1024);
@@ -76,7 +76,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
     }
 
     @Override
-    public void sessionOpened(IoSession session) throws Exception {
+    public void sessionOpened(IoSession session) {
         // 起始 IP 检查
         String address = session.getRemoteAddress().toString().split(":")[0];
         FileoutputUtil.log("[登陆服务] " + address + " 已连接");
@@ -243,7 +243,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
         return "UNKNOWN";
     }
 
-    public static void handlePacket(final RecvPacketOpcode header, final SeekableLittleEndianAccessor slea, final MapleClient c) throws InterruptedException {
+    public static void handlePacket(final RecvPacketOpcode header, final SeekableLittleEndianAccessor slea, final MapleClient c) {
         switch (header) {
             case ENTER:
                 final byte switchs = slea.readByte();

@@ -72,7 +72,7 @@ public class MapleAESOFB {
         return this.iv;
     }
 
-    public byte[] crypt(byte[] data) throws IllegalBlockSizeException, BadPaddingException {
+    public byte[] crypt(byte[] data) {
         updateIv();
         return data;
     }

@@ -160,7 +160,7 @@ public class Battler implements Serializable {
     }
 
     public byte getIV(BattleConstants.PokemonStat stat) {
-        return ((Byte) this.mods.get(stat).left);
+        return this.mods.get(stat).left;
     }
 
     public void resetNature() {
@@ -487,7 +487,7 @@ public class Battler implements Serializable {
     }
 
     public double getMod(BattleConstants.PokemonStat stat) {
-        return ((Double) this.mods.get(stat).right) * (((Byte) this.mods.get(stat).left) / 250.0D + 0.8D) * (this.nature.inc == stat ? 1.1D : 1.0D) * (this.nature.dec == stat ? 0.9D : 1.0D);
+        return this.mods.get(stat).right * (this.mods.get(stat).left / 250.0D + 0.8D) * (this.nature.inc == stat ? 1.1D : 1.0D) * (this.nature.dec == stat ? 0.9D : 1.0D);
     }
 
     public int getAverageIV() {

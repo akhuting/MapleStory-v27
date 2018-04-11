@@ -46,7 +46,7 @@ public class Start {
         this.ivCheck = false;
     }
 
-    public void run() throws InterruptedException {
+    public void run() {
         long start = System.currentTimeMillis();
 //        LoggingService.init();
 //        MapleInfos.printAllInfos();
@@ -69,7 +69,7 @@ public class Start {
         System.out.println("服务器地址: " + ServerProperties.getProperty("channel.interface", ServerConstants.IP) + ":" + LoginServer.DEFAULT_PORT);
         System.out.println("游戏版本: " + ServerConstants.MAPLE_TYPE + " v." + ServerConstants.MAPLE_VERSION + "." + ServerConstants.MAPLE_PATCH);
         System.out.println("主服务器: " + WorldConstants.getMainWorld().name());
-        System.out.println("");
+        System.out.println();
         runThread();
         loadData(false);
 

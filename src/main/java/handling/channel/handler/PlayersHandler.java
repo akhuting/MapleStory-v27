@@ -80,7 +80,7 @@ public class PlayersHandler {
                 }
                 break;
             default:
-                FileoutputUtil.log(new StringBuilder().append("Unhandled note action, ").append(type).append("").toString());
+                FileoutputUtil.log(new StringBuilder().append("Unhandled note action, ").append(type).toString());
         }
     }
 

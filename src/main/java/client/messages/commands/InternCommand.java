@@ -1106,8 +1106,8 @@ public class InternCommand {
             HashMap<Integer, ArrayList<String>> commandList = CommandProcessor.getCommandList();
             for (int i = 0; i <= c.getPlayer().getGMLevel(); i++) {
                 if (commandList.containsKey(i)) {
-                    final StringBuilder sb = new StringBuilder("");
-                    final StringBuilder 命令前缀 = new StringBuilder("");
+                    final StringBuilder sb = new StringBuilder();
+                    final StringBuilder 命令前缀 = new StringBuilder();
                     char[] gmRank = PlayerGMRank.getByLevel(i).getCommandPrefix();
                     for (int j = 0; j < gmRank.length; j++) {
                         命令前缀.append('"').append(gmRank[j]).append('"');

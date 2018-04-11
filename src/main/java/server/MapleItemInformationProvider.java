@@ -1474,9 +1474,7 @@ public class MapleItemInformationProvider {
             int starthour = Integer.parseInt(hourspan[0]);
             int endhour = Integer.parseInt(hourspan[1]);
 
-            if ((cal.get(11) >= starthour) && (cal.get(11) <= endhour)) {
-                return true;
-            }
+            return (cal.get(11) >= starthour) && (cal.get(11) <= endhour);
         }
         return false;
     }

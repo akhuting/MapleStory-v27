@@ -45,7 +45,7 @@ public class DumpQuests {
     protected int id = 0;
     private final Connection con = DatabaseConnection.getConnection();
 
-    public DumpQuests(boolean update) throws Exception {
+    public DumpQuests(boolean update) {
         this.update = update;
         this.quest = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath", "wz") + "/Quest.wz"));
         if (quest == null) {
