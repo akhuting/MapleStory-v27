@@ -42,7 +42,7 @@ public class Equip extends Item implements Serializable {
     private MapleRing ring = null;
 
     public Equip(int id, short position, byte flag) {
-        super(id, (byte)position, (short) 1, (short) flag);
+        super(id, (byte)position, (short) 1, flag);
     }
 
     public Equip(int id, short position, int uniqueid, short flag) {

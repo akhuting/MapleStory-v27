@@ -51,7 +51,7 @@ public class MapleLifeFactory {
         if (NPCLoc.containsKey(npcid)) {
             return NPCLoc.get(npcid);
         }
-        int map = MapleDataTool.getIntConvert(Integer.toString(npcid) + "/0", npclocData, -1);
+        int map = MapleDataTool.getIntConvert(npcid + "/0", npclocData, -1);
         NPCLoc.put(npcid, map);
         return map;
     }
@@ -118,7 +118,7 @@ public class MapleLifeFactory {
         if (stats == null) {
             MapleData monsterData;
             try {
-                monsterData = data.getData(StringUtil.getLeftPaddedStr(Integer.toString(mobId) + ".img", '0', 11));
+                monsterData = data.getData(StringUtil.getLeftPaddedStr(mobId + ".img", '0', 11));
             } catch (RuntimeException e) {
                 return null;
             }
@@ -335,7 +335,7 @@ public class MapleLifeFactory {
         // 增加一个NPC的脚本属性属性值
         MapleNPC npc = new MapleNPC(nid, name);
         final MapleDataProvider wzNpc = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("wzpath", "wz") + "/Npc.wz"));
-        MapleData data = wzNpc.getData(StringUtil.getLeftPaddedStr(Integer.toString(nid) + ".img", '0', 11));
+        MapleData data = wzNpc.getData(StringUtil.getLeftPaddedStr(nid + ".img", '0', 11));
         MapleData link = data.getChildByPath("info/quest");
         if (link != null) {
             String scriptName = MapleDataTool.getString("info/quest", data);

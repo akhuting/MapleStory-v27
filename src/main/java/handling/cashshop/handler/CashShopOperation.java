@@ -40,7 +40,7 @@ public class CashShopOperation {
         CashShopServer.getPlayerStorage().deregisterPlayer(chr);
         c.updateLoginState(MapleClient.LOGIN_SERVER_TRANSITION, c.getSessionIPAddress());
         String s = c.getSessionIPAddress();
-        LoginServer.addIPAuth(s.substring(s.indexOf('/') + 1, s.length()));
+        LoginServer.addIPAuth(s.substring(s.indexOf('/') + 1));
         c.getSession().write(MaplePacketCreator.getChannelChange(c, Integer.parseInt(toch.getIP().split(":")[1])));
         chr.saveToDB(false, true);
         c.setPlayer(null);

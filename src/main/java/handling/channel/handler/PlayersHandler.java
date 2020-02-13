@@ -182,7 +182,7 @@ public class PlayersHandler {
         byte slot = (byte) slea.readShort();
         int itemId = slea.readInt();
         String target = slea.readMapleAsciiString();
-        Item toUse = c.getPlayer().getInventory(MapleInventoryType.USE).getItem((short) slot);
+        Item toUse = c.getPlayer().getInventory(MapleInventoryType.USE).getItem(slot);
         if ((toUse == null) || (toUse.getQuantity() < 1) || (toUse.getItemId() != itemId)) {
             c.getSession().write(MaplePacketCreator.enableActions());
             return;
@@ -193,7 +193,7 @@ public class PlayersHandler {
                 if (search_chr != null) {
                     MapleItemInformationProvider.getInstance().getItemEffect(2210023).applyTo(search_chr);
                     search_chr.dropMessage(6, new StringBuilder().append(chr.getName()).append(" has played a prank on you!").toString());
-                    MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) slot, (short) 1, false);
+                    MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                 } else {
                     chr.dropMessage(1, new StringBuilder().append("在当前地图中未找到 '").append(target).append("' 的玩家.").toString());
                 }

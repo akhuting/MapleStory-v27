@@ -117,7 +117,7 @@ public class PetHandler {
                     c.getSession().write(PetPacket.showOwnPetLevelUp());
                     chr.getMap().broadcastMessage(PetPacket.showPetLevelUp(chr));
                 }
-                c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+                c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
             }
         }
         chr.getMap().broadcastMessage(PetPacket.commandResponse(chr.getId(), (byte) petCommand.getCommand(), success, false));
@@ -166,7 +166,7 @@ public class PetHandler {
                     chr.getMap().broadcastMessage(PetPacket.showPetLevelUp(chr));
                 }
             }
-            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
             chr.getMap().broadcastMessage(c.getPlayer(), PetPacket.commandResponse(chr.getId(), (byte) 1, true, true), true);
         } else {
             if (gainCloseness) {
@@ -180,7 +180,7 @@ public class PetHandler {
                 }
                 chr.dropMessage(5, "您的宠物的饥饿感是满值，如果继续使用将会有50%的几率减少1点亲密度。");
             }
-            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), true));
+            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), true));
             chr.getMap().broadcastMessage(chr, PetPacket.commandResponse(chr.getId(), (byte) 1, false, true), true);
         }
         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, true, false);
@@ -229,7 +229,7 @@ public class PetHandler {
         MaplePet pet = c.getPlayer().getSpawnPets();
             if ((pet != null) && (pet.getSummoned())) {
                 pet.setCanPickup(data > 0);
-                chr.getClient().getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+                chr.getClient().getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
             }
         c.getSession().write(PetPacket.showPetPickUpMsg(data > 0, 1));
     }

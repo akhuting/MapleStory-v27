@@ -66,7 +66,7 @@ public class UseCashItemHandler {
         byte slot = (byte) slea.readShort();
         int itemId = slea.readInt();
         int itemType = itemId / 10000;
-        Item toUse = chr.getInventory(MapleInventoryType.USE).getItem((short) slot);
+        Item toUse = chr.getInventory(MapleInventoryType.USE).getItem(slot);
         if ((toUse == null) || (toUse.getItemId() != itemId) || (toUse.getQuantity() < 1) || (chr.hasBlockedInventory())) {
             c.getSession().write(MaplePacketCreator.enableActions());
             return;
@@ -456,7 +456,7 @@ public class UseCashItemHandler {
                     }
                     pet.setName(nName);
                     pet.saveToDb();
-                    c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+                    c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
                     c.getSession().write(MaplePacketCreator.enableActions());
                     chr.getMap().broadcastMessage(MTSCSPacket.changePetName(chr, nName, pet.getInventoryPosition()));
                     used = true;
@@ -481,7 +481,7 @@ public class UseCashItemHandler {
                         }
                         pet.setFlags(pet.getFlags() | petFlag.getValue());
                         pet.saveToDb();
-                        c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+                        c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
                         c.getSession().write(MaplePacketCreator.enableActions());
                         c.getSession().write(MTSCSPacket.changePetFlag(uniqueid, true, petFlag.getValue()));
                         used = true;
@@ -505,7 +505,7 @@ public class UseCashItemHandler {
                         if ((petFlag != null) && (petFlag.check(pet.getFlags()))) {
                             pet.setFlags(pet.getFlags() - petFlag.getValue());
                             pet.saveToDb();
-                            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+                            c.getSession().write(PetPacket.updatePet(pet, chr.getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
                             c.getSession().write(MaplePacketCreator.enableActions());
                             c.getSession().write(MTSCSPacket.changePetFlag(uniqueid, false, petFlag.getValue()));
                             used = true;
@@ -621,7 +621,7 @@ public class UseCashItemHandler {
         }
 
         if ((itemType != 506) || (used)) {
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) slot, (short) 1, false, true);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false, true);
         }
         c.getSession().write(MaplePacketCreator.enableActions());
         if (cc) {

@@ -259,15 +259,11 @@ public class MapleSquad {
     }
 
     public void removeMember(MapleCharacter chr) {
-        if (this.members.containsKey(chr.getName())) {
-            this.members.remove(chr.getName());
-        }
+        this.members.remove(chr.getName());
     }
 
     public void removeMember(String chr) {
-        if (this.members.containsKey(chr)) {
-            this.members.remove(chr);
-        }
+        this.members.remove(chr);
     }
 
     public void banMember(int pos) {

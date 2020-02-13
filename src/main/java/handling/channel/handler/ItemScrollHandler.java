@@ -49,7 +49,7 @@ public class ItemScrollHandler {
         if (slea.available() >= 3L) {
             ws = (byte) slea.readShort();
         }
-        UseUpgradeScroll((short) slot, (short) dst, (short) ws, c, chr, 0, cash);
+        UseUpgradeScroll(slot, dst, ws, c, chr, 0, cash);
     }
 
     /**

@@ -103,7 +103,7 @@ public class LoginPacket {
         mplew.write(SendPacketOpcode.LOGIN_STATUS.getValue());
         mplew.writeShort(2);
         mplew.write(0);
-        mplew.writeShort((short) reason);
+        mplew.writeShort(reason);
         mplew.write(HexTool.getByteArrayFromHexString("01 01 01 01 00"));
 
         return mplew.getPacket();

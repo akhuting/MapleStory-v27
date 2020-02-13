@@ -93,12 +93,12 @@ public class WZTool {
             if (b == 0x7F) {
                 strLength = llea.readInt();
             } else {
-                strLength = (int) b;
+                strLength = b;
             }
             if (strLength < 0) {
                 return "";
             }
-            byte str[] = new byte[strLength * 2];
+            byte[] str = new byte[strLength * 2];
             for (int i = 0; i < strLength * 2; i++) {
                 str[i] = llea.readByte();
             }
@@ -112,7 +112,7 @@ public class WZTool {
             if (strLength < 0) {
                 return "";
             }
-            byte str[] = new byte[strLength];
+            byte[] str = new byte[strLength];
             for (int i = 0; i < strLength; i++) {
                 str[i] = llea.readByte();
             }
@@ -162,7 +162,7 @@ public class WZTool {
         if (b == -128) {
             return lea.readInt();
         } else {
-            return ((int) b);
+            return b;
         }
     }
 

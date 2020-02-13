@@ -152,11 +152,11 @@ public final class MonsterFamiliar extends AnimatedMapleMapObject implements Ser
         mplew.writeInt(getFamiliar());
         mplew.writeZero(13);
         mplew.write(chr ? 1 : 0);
-        mplew.writeShort((short) getVitality());
+        mplew.writeShort(getVitality());
         mplew.writeInt(getFatigue());
         mplew.writeLong(PacketHelper.getTime(getVitality() >= 3 ? System.currentTimeMillis() : -2L));
         mplew.writeLong(PacketHelper.getTime(System.currentTimeMillis()));
         mplew.writeLong(PacketHelper.getTime(getExpiry()));
-        mplew.writeShort((short) getVitality());
+        mplew.writeShort(getVitality());
     }
 }

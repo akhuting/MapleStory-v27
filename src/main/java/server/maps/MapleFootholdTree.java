@@ -133,9 +133,7 @@ public class MapleFootholdTree {
             }
             if (((p1.x > this.center.x) || (p2.x > this.center.x)) && (p1.y > this.center.y)) {
                 MapleFoothold ret = this.se.findWallR(p1, p2);
-                if (ret != null) {
-                    return ret;
-                }
+                return ret;
             }
         }
         return null;

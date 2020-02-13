@@ -126,7 +126,7 @@ public class InterServerHandler {
             if (transfer == null) {
                 Triple ip = LoginServer.getLoginAuth(playerid);
                 String s = c.getSessionIPAddress();
-                if ((ip == null) || (!s.substring(s.indexOf(47) + 1, s.length()).equals(ip.left))) {
+                if ((ip == null) || (!s.substring(s.indexOf(47) + 1).equals(ip.left))) {
                     if (ip != null) {
                         LoginServer.putLoginAuth(playerid, (String) ip.left, (String) ip.mid, (Integer) ip.right);
                     }

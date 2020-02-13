@@ -19,13 +19,13 @@ public class ItemMakerHandler {
         }
         byte slot = (byte) slea.readShort();
         int itemId = slea.readInt();
-        Item toUse = chr.getInventory(MapleInventoryType.USE).getItem((short) slot);
+        Item toUse = chr.getInventory(MapleInventoryType.USE).getItem(slot);
         if ((toUse == null) || (toUse.getQuantity() < 1) || (toUse.getItemId() != itemId) || (itemId / 10000 != 251)) {
             c.getSession().write(MaplePacketCreator.enableActions());
             return;
         }
         if (MapleItemInformationProvider.getInstance().getItemEffect(toUse.getItemId()).applyTo(chr)) {
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) slot, (short) 1, false);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
         }
     }
 

@@ -28,7 +28,7 @@ public class CharSelectedHandler {
             c.getIdleTask().cancel(true);
         }
         String ip = c.getSessionIPAddress();
-        LoginServer.putLoginAuth(charId, ip.substring(ip.indexOf('/') + 1, ip.length()), c.getTempIP(), c.getChannel());
+        LoginServer.putLoginAuth(charId, ip.substring(ip.indexOf('/') + 1), c.getTempIP(), c.getChannel());
         c.updateLoginState(MapleClient.LOGIN_SERVER_TRANSITION, ip);
         c.getSession().write(MaplePacketCreator.getServerIP(c, Integer.parseInt(ChannelServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
     }

@@ -1077,7 +1077,7 @@ public class MapleInventoryManipulator {
 
             if (ItemConstants.isPet(source.getItemId()) || ItemFlag.不可交易.check(flag) || ii.isDropRestricted(target.getItemId()) || ii.isAccountShared(target.getItemId())) {
                 if (ItemFlag.KARMA_USE.check(flag)) {
-                    target.setFlag((short) (byte) (flag - ItemFlag.KARMA_USE.getValue()));
+                    target.setFlag((byte) (flag - ItemFlag.KARMA_USE.getValue()));
                     c.getPlayer().getMap().spawnItemDrop(c.getPlayer(), c.getPlayer(), target, dropPos, true, true);
                 } else {
                     c.getPlayer().getMap().disappearingItemDrop(c.getPlayer(), c.getPlayer(), target, dropPos);
@@ -1094,7 +1094,7 @@ public class MapleInventoryManipulator {
 
             if (ItemConstants.isPet(source.getItemId()) || ItemFlag.不可交易.check(flag) || ii.isDropRestricted(source.getItemId()) || ii.isAccountShared(source.getItemId())) {
                 if (ItemFlag.KARMA_USE.check(flag)) {
-                    source.setFlag((short) (byte) (flag - ItemFlag.KARMA_USE.getValue()));
+                    source.setFlag((byte) (flag - ItemFlag.KARMA_USE.getValue()));
                     c.getPlayer().getMap().spawnItemDrop(c.getPlayer(), c.getPlayer(), source, dropPos, true, true);
                 } else {
                     c.getPlayer().getMap().disappearingItemDrop(c.getPlayer(), c.getPlayer(), source, dropPos);

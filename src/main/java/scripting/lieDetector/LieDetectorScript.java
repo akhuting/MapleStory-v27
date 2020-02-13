@@ -27,7 +27,7 @@ public class LieDetectorScript {
                 output.write(buffer, 0, n);
             }
             String imgByte = HexTool.toString(output.toByteArray());
-            return new Pair(imgByte.substring(39, imgByte.length()), output.toString().split("CAPTCHA")[0]);
+            return new Pair(imgByte.substring(39), output.toString().split("CAPTCHA")[0]);
         } catch (IOException ex) {
             File directory = new File(IMG_DIRECTORY);
             if (!directory.exists()) {
@@ -39,7 +39,7 @@ public class LieDetectorScript {
             answer = answer.substring(0, answer.length() - 4);
             try {
                 return new Pair(HexTool.toString(getBytesFromFile(new File(IMG_DIRECTORY + answer + ".jpg"))), answer);
-            } catch (IOException e) {
+            } catch (Exception e) {
             }
         }
         return null;

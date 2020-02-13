@@ -303,7 +303,7 @@ public class NPCHandler {
                 }
 
                 MapleInventoryType type1 = ItemConstants.getInventoryType(itemId);
-                if (chr.getInventory(type1).getItem((short) slot) == null) {
+                if (chr.getInventory(type1).getItem(slot) == null) {
                     c.getSession().write(MaplePacketCreator.enableActions());
                     return;
                 }
@@ -314,7 +314,7 @@ public class NPCHandler {
                     return;
                 }
 
-                item = chr.getInventory(type1).getItem((short) slot).copy();
+                item = chr.getInventory(type1).getItem(slot).copy();
 
                 if (ItemConstants.isPet(item.getItemId())) {
                     c.getSession().write(MaplePacketCreator.enableActions());
@@ -330,7 +330,7 @@ public class NPCHandler {
                         quantity = item.getQuantity();
                     }
                     chr.gainMeso(-meso, false, false);
-                    MapleInventoryManipulator.removeFromSlot(c, type1, (short) slot, quantity, false);
+                    MapleInventoryManipulator.removeFromSlot(c, type1, slot, quantity, false);
                     item.setQuantity(quantity);
                     storage.store(item);
                     storage.sendStored(c, ItemConstants.getInventoryType(itemId));

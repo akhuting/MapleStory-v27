@@ -1078,7 +1078,7 @@ public abstract class AbstractPlayerInteraction {
         MaplePet pet = getPlayer().getSpawnPet();
         if (pet != null) {
             pet.setCloseness(pet.getCloseness() + closeness * getChannelServer().getTraitRate());
-            getClient().getSession().write(PetPacket.updatePet(pet, getPlayer().getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), false));
+            getClient().getSession().write(PetPacket.updatePet(pet, getPlayer().getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), false));
         }
     }
 
@@ -1086,7 +1086,7 @@ public abstract class AbstractPlayerInteraction {
         MaplePet pets = getPlayer().getSpawnPets();
         if ((pets != null) && (pets.getSummoned())) {
             pets.setCloseness(pets.getCloseness() + closeness);
-            getClient().getSession().write(PetPacket.updatePet(pets, getPlayer().getInventory(MapleInventoryType.CASH).getItem((short) (byte) pets.getInventoryPosition()), false));
+            getClient().getSession().write(PetPacket.updatePet(pets, getPlayer().getInventory(MapleInventoryType.CASH).getItem((byte) pets.getInventoryPosition()), false));
         }
     }
 
@@ -1296,7 +1296,7 @@ public abstract class AbstractPlayerInteraction {
     }
 
     public void removeSlot(int invType, byte slot, short quantity) {
-        MapleInventoryManipulator.removeFromSlot(this.c, getInvType(invType), (short) slot, quantity, true);
+        MapleInventoryManipulator.removeFromSlot(this.c, getInvType(invType), slot, quantity, true);
     }
 
     public void gainGP(int gp) {
@@ -1773,9 +1773,7 @@ public abstract class AbstractPlayerInteraction {
     }
 
     public void spawnNPCRequestController(int npcid, int x, int y, int cy) {
-        if (npcRequestController.containsKey(new Pair(npcid, c))) {
-            npcRequestController.remove(new Pair(npcid, c));
-        }
+        npcRequestController.remove(new Pair(npcid, c));
         MapleNPC npc = MapleLifeFactory.getNPC(npcid);
         if (npc == null) {
             return;
@@ -1856,7 +1854,7 @@ public abstract class AbstractPlayerInteraction {
     }
 
     public List<MapleCharacter> getchrlist() {
-        return this.c.loadCharacters((int) c.getPlayer().getWorld());
+        return this.c.loadCharacters(c.getPlayer().getWorld());
     }
 
     public int deleteCharacter(int charId) {

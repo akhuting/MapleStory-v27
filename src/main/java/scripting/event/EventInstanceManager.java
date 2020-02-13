@@ -350,9 +350,7 @@ public class EventInstanceManager {
         if (this.disposed) {
             return;
         }
-        if (this.mobs.contains(mob)) {
-            this.mobs.remove(mob);
-        }
+        this.mobs.remove(mob);
         if (this.mobs.isEmpty()) {
             try {
                 this.em.getIv().invokeFunction("allMonstersDead", this);

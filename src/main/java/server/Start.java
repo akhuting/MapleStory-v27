@@ -13,6 +13,7 @@ import handling.login.LoginInformationProvider;
 import handling.login.LoginServer;
 import handling.world.World;
 import handling.world.WorldRespawnService;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.Connection;
@@ -47,9 +48,8 @@ public class Start {
     }
 
     public void run() {
+        System.setProperty("wzpath", "D:\\wz_027");
         long start = System.currentTimeMillis();
-//        LoggingService.init();
-//        MapleInfos.printAllInfos();
         this.rankTime = Integer.parseInt(ServerProperties.getProperty("rankTime", "120"));
         this.ivCheck = Boolean.parseBoolean(ServerProperties.getProperty("ivCheck", "false"));
         if ((ServerProperties.getProperty("admin", false)) || (ServerConstants.USE_LOCALHOST)) {
@@ -58,7 +58,6 @@ public class Start {
         }
         try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("UPDATE `accounts` SET `loggedin` = 0")) {
             ps.executeUpdate();
-            ps.close();
         } catch (SQLException ex) {
             throw new RuntimeException("运行时错误: 无法连接到MySQL数据库伺服器");
         }
@@ -89,28 +88,7 @@ public class Start {
         ShutdownServer.registerMBean();
         ServerConstants.registerMBean();
         PlayerNPC.loadAll();
-//        printSection("定时活动");
-//        MessengerRankingWorker.getInstance();
         LoginServer.setOn();
-//        Server.run_startup_configurations();
-//        Server.setGameRunning(true);
-//
-//        if (this.rankTime > 0) {
-//            printSection("刷新排名");
-//            RankingWorker.start();
-//        }
-//
-//          if (Boolean.parseBoolean(ServerProperties.getProperty("world.AccCheck", "false"))) {
-//              printSection("启动检测");
-//              startCheck();
-//        }
-//          printSection("在线统计");
-//          在线统计(Integer.parseInt(ServerProperties.getProperty("world.showUserCountTime", "30")));
-//          MessengerRankingWorker.getInstance();
-//
-//          if (Boolean.parseBoolean(ServerProperties.getProperty("world.checkCopyItem", "false")))   {
-//            checkCopyItemFromSql();
-//        }
         long now = System.currentTimeMillis() - start;
         long seconds = now / 1000;
         long ms = now % 1000;
@@ -118,7 +96,6 @@ public class Start {
             DatabaseBackup.getInstance().startTasking();
             System.out.println("启动数据库自动备份!");
         }
-//        ManagerSin.main(ServerConstants.GUI);
         System.out.println("加载完成, 耗时: " + seconds + "秒" + ms + "毫秒\r\n");
         System.out.println("服务端开启完毕，可以登入游戏了！");
     }
@@ -145,9 +122,6 @@ public class Start {
 
         System.out.println("加载排名信息数据");
         MapleGuildRanking.getInstance().load(reload);
-
-        //System.out.println("加载公会数据并清理不存在公会");
-        //MapleGuild.loadAll();
 
         System.out.println("加载任务数据");
         //加载任务信息
@@ -220,51 +194,12 @@ public class Start {
         }
     }
 
-    protected static void checkCopyItemFromSql() {
-        ArrayList<Integer> equipOnlyIds = new ArrayList();
-        Map checkItems = new HashMap();
-        try {
-            Connection con = DatabaseConnection.getConnection();
-
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM inventoryitems WHERE equipOnlyId > 0");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int itemId = rs.getInt("itemId");
-                int equipOnlyId = rs.getInt("equipOnlyId");
-                if (equipOnlyId > 0) {
-                    if (checkItems.containsKey(equipOnlyId)) {
-                        if (((Integer) checkItems.get(equipOnlyId)) == itemId) {
-                            equipOnlyIds.add(equipOnlyId);
-                        }
-                    } else {
-                        checkItems.put(equipOnlyId, itemId);
-                    }
-                }
-            }
-            rs.close();
-            ps.close();
-
-            Collections.sort(equipOnlyIds);
-            for (int i : equipOnlyIds) {
-                ps = con.prepareStatement("DELETE FROM inventoryitems WHERE equipOnlyId = ?");
-                ps.setInt(1, i);
-                ps.executeUpdate();
-                ps.close();
-                System.out.println("发现复制装备 该装备的唯一ID: " + i + " 已进行删除处理..");
-                FileoutputUtil.log("装备复制.txt", "发现复制装备 该装备的唯一ID: " + i + " 已进行删除处理..", true);
-            }
-        } catch (SQLException ex) {
-            System.out.println("[EXCEPTION] 清理复制装备出现错误." + ex);
-        }
-    }
-
     public static class Shutdown
             implements Runnable {
 
         @Override
         public void run() {
             ShutdownServer.getInstance().run();
-//            ShutdownServer.getInstance().run();
         }
     }
 }

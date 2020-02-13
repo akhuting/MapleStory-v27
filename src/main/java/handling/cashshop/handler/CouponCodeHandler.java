@@ -66,7 +66,7 @@ public class CouponCodeHandler {
                         c.getSession().write(MTSCSPacket.商城错误提示(0));
                         return;
                     }
-                    itemz.put(item, chr.getInventory(ItemConstants.getInventoryType(item)).getItem((short) slot));
+                    itemz.put(item, chr.getInventory(ItemConstants.getInventoryType(item)).getItem(slot));
 
                     break;
                 case 4:

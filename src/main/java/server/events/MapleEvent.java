@@ -179,7 +179,7 @@ public abstract class MapleEvent {
                     if (chr.getMapId() == i) {
                         e.startEvent();
                         setEvent(chr.getClient().getChannelServer(), false);
-                        chr.dropMessage(5, String.valueOf(t.desc) + " has been started.");
+                        chr.dropMessage(5, t.desc + " has been started.");
                     }
                 }
             }

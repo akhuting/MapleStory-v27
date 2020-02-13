@@ -123,7 +123,7 @@ public class DumpMobSkills {
                     if (summ.length() > 0) {
                         summ.append(", ");
                     }
-                    summ.append(String.valueOf(summon));
+                    summ.append(summon);
                 }
                 ps.setString(12, summ.toString());
                 if (lvlz.getChildByPath("lt") != null) {

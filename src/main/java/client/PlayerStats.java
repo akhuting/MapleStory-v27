@@ -2469,7 +2469,7 @@ public class PlayerStats implements Serializable {
                 case "elemboost": {
                     String craft = ii.getEquipAddReqs(itemId, (String) add.getLeft(), "craft");
                     if ((add.getMid().equals("elemVol")) && ((craft == null) )) {
-                        int value = Integer.parseInt(((String) add.getRight()).substring(1, ((String) add.getRight()).length()));
+                        int value = Integer.parseInt(((String) add.getRight()).substring(1));
                         Element key = Element.getFromChar(((String) add.getRight()).charAt(0));
                         if (this.elemBoosts.get(key) != null) {
                             value += (this.elemBoosts.get(key));
@@ -2505,7 +2505,7 @@ public class PlayerStats implements Serializable {
                             && (chra.getLevel() >= Integer.parseInt(level))) {
                         canLevel = true;
                     }
-                    if (((job != null) && (canJob)) || ((job == null) && (((level != null) && (canLevel)) || (level == null)))) {
+                    if (((job != null) && (canJob)) || ((job == null) && (level == null || (canLevel)))) {
                         switch ((String) add.getMid()) {
                             case "prob":
                                 this.passive_sharpeye_rate = (short) (this.passive_sharpeye_rate + right);
@@ -3084,7 +3084,7 @@ public class PlayerStats implements Serializable {
     }
 
     public void setMesoGuardMeso(int meso){
-        this.mesoGuardMeso = (double) meso;
+        this.mesoGuardMeso = meso;
     }
 
 }

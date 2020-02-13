@@ -322,7 +322,7 @@ public class NPCPacket {
      * @param talk
      * @return
      */
-    public static byte[] sendNPCAskAvatar(int npc,String talk,int styles[]) {
+    public static byte[] sendNPCAskAvatar(int npc, String talk, int[] styles) {
         MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
         baseScriptMan(mplew,npc,(byte)5);
 
@@ -397,7 +397,7 @@ public class NPCPacket {
         mplew.writeShort(flag);
         mplew.writeInt((int)meso);
 
-        byte size[] = new byte[]{0,0,0,0,0,0};
+        byte[] size = new byte[]{0,0,0,0,0,0};
         for (Item item : items) {
             switch(item.getItemId() / 1000000) {
                 case 1: size[1]++; break;

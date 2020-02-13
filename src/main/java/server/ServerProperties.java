@@ -28,7 +28,7 @@ public class ServerProperties {
     public static long maxMeso = 2147483647;
 
     public static String getPath() {
-        return System.getProperty("path", "") + "配置.ini";
+        return System.getProperty("path", "C:\\Users\\akhut\\IdeaProjects\\MapleStory-v27\\src\\main\\resources\\") + "配置.ini";
     }
 
     public static void loadProperties() {

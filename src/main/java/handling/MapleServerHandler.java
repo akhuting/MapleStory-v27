@@ -108,7 +108,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
         }
         tracker.put(address, new Pair(System.currentTimeMillis(), count));
         // 结束 ID 检查
-        String IP = address.substring(address.indexOf('/') + 1, address.length());
+        String IP = address.substring(address.indexOf('/') + 1);
 
         if (channel == MapleServerHandler.CASH_SHOP_SERVER) {
             if (CashShopServer.isShutdown()) {
@@ -225,7 +225,7 @@ public class MapleServerHandler extends IoHandlerAdapter {
                 }
                 try {
                     handlePacket(recv, slea, client);
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     FileoutputUtil.log(FileoutputUtil.Packet_Ex, new StringBuilder().append("封包: ").append(lookupRecv(packetId)).append("\r\n").append(slea.toString(true)).toString());
                     FileoutputUtil.outputFileError(FileoutputUtil.Packet_Ex, e);
                 }

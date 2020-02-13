@@ -219,9 +219,7 @@ public abstract class AbstractPlayerStore extends MapleMapObject implements IMap
     }
 
     public void removeVisitorsList(String visitorName) {
-        if (this.visitorsList.containsKey(visitorName)) {
-            this.visitorsList.remove(visitorName);
-        }
+        this.visitorsList.remove(visitorName);
     }
 
     @Override

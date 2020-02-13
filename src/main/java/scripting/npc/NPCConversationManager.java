@@ -119,7 +119,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         c.getSession().write(NPCPacket.sendNPCAskMenu(id,sel));
     }
 
-    public void sendStyle(String text,int styles[]){
+    public void sendStyle(String text, int[] styles){
         if (styles.length <= 0) {
             return;
         }
@@ -929,7 +929,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
     }
 
     public void changeStat(byte slot, int type, int amount) {
-        Equip sel = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) slot);
+        Equip sel = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(slot);
         switch (type) {
             case 0:
                 sel.setStr((short) amount);
@@ -1133,9 +1133,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         if ((statsSel instanceof Equip)) {
             Equip eq = (Equip) statsSel;
             if (eq.getExpiration() == -1L) {
-                eq.setFlag((short) (byte) (eq.getFlag() | ItemFlag.封印.getValue()));
+                eq.setFlag((byte) (eq.getFlag() | ItemFlag.封印.getValue()));
             } else {
-                eq.setFlag((short) (byte) (eq.getFlag() | ItemFlag.不可交易.getValue()));
+                eq.setFlag((byte) (eq.getFlag() | ItemFlag.不可交易.getValue()));
             }
         }
     }
@@ -1157,7 +1157,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
         if (inv == null) {
             return false;
         }
-        Item item = getPlayer().getInventory(inv).getItem((short) (byte) slot);
+        Item item = getPlayer().getInventory(inv).getItem((byte) slot);
         if ((item == null) || ((statsSel instanceof Item))) {
             item = (Item) statsSel;
         }
@@ -1173,9 +1173,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                 eq.setUpgradeSlots((byte) (eq.getUpgradeSlots() - 1));
 
                 if (eq.getExpiration() == -1L) {
-                    eq.setFlag((short) (byte) (eq.getFlag() | ItemFlag.封印.getValue()));
+                    eq.setFlag((byte) (eq.getFlag() | ItemFlag.封印.getValue()));
                 } else {
-                    eq.setFlag((short) (byte) (eq.getFlag() | ItemFlag.不可交易.getValue()));
+                    eq.setFlag((byte) (eq.getFlag() | ItemFlag.不可交易.getValue()));
                 }
             }
             if (type.equalsIgnoreCase("Slots")) {
@@ -1215,7 +1215,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             } else if (type.equalsIgnoreCase("Expiration")) {
                 eq.setExpiration(eq.getExpiration() + offset);
             } else if (type.equalsIgnoreCase("Flag")) {
-                eq.setFlag((short) (byte) (eq.getFlag() + offset));
+                eq.setFlag((byte) (eq.getFlag() + offset));
             }
             item = eq.copy();
         }

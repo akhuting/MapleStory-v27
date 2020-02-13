@@ -137,7 +137,7 @@ public class MapleShop {
         if (quantity == 65535 || quantity <= 0) {
             quantity = 1;
         }
-        Item item = c.getPlayer().getInventory(type).getItem((short) slot);
+        Item item = c.getPlayer().getInventory(type).getItem(slot);
         if (item == null) {
             FileoutputUtil.log("该位置上无道具："+slot);
             return;
@@ -162,7 +162,7 @@ public class MapleShop {
             return;
         }
         if (quantity <= iQuant && (iQuant > 0 || ItemConstants.is飞镖道具(item.getItemId()) || ItemConstants.is子弹道具(item.getItemId()))) {
-            MapleInventoryManipulator.removeFromSlot(c, type, (short) slot, quantity, false);
+            MapleInventoryManipulator.removeFromSlot(c, type, slot, quantity, false);
             double price;
             if (ItemConstants.is飞镖道具(item.getItemId()) || ItemConstants.is子弹道具(item.getItemId())) {
                 price = ii.getWholePrice(item.getItemId()) / ii.getSlotMax(item.getItemId());
@@ -183,7 +183,7 @@ public class MapleShop {
      * @param slot
      */
     public void recharge(MapleClient c, byte slot) {
-        Item item = c.getPlayer().getInventory(MapleInventoryType.USE).getItem((short) slot);
+        Item item = c.getPlayer().getInventory(MapleInventoryType.USE).getItem(slot);
         if (item == null || (!ItemConstants.is飞镖道具(item.getItemId()) && !ItemConstants.is子弹道具(item.getItemId()))) {
             return;
         }

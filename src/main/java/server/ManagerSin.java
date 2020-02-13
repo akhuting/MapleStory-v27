@@ -34,9 +34,9 @@ import tools.packet.NPCPacket;
  */
 public class ManagerSin extends javax.swing.JFrame {
 
-    public static int exp[] = new int[20];
-    public static int meso[] = new int[20];
-    public static int drop[] = new int[20];
+    public static int[] exp = new int[20];
+    public static int[] meso = new int[20];
+    public static int[] drop = new int[20];
     //public int wid[] = new int[20];
 
     /**

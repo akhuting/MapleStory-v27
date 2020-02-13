@@ -63,7 +63,7 @@ public class PlayerShopPacket {
         mplew.write(InteractionOpcode.房间.getValue());
         mplew.write(6);
         mplew.write(merch.getMaxSize());
-        mplew.writeShort((short) merch.getVisitorSlot(chr));
+        mplew.writeShort(merch.getVisitorSlot(chr));
         mplew.writeInt(merch.getItemId());
         mplew.writeMapleAsciiString("雇佣商人");
         for (Pair storechr : merch.getVisitors()) {
@@ -129,7 +129,7 @@ public class PlayerShopPacket {
                 mplew.write(2);
         }
 
-        mplew.writeShort((short) ips.getVisitorSlot(chr));
+        mplew.writeShort(ips.getVisitorSlot(chr));
         PacketHelper.addCharLook(mplew, ((MaplePlayerShop) ips).getMCOwner(), false, ((MaplePlayerShop) ips).getMCOwner().isZeroSecondLook());
         mplew.writeMapleAsciiString(ips.getOwnerName());
         mplew.writeShort(((MaplePlayerShop) ips).getMCOwner().getJob());
@@ -346,7 +346,7 @@ public class PlayerShopPacket {
         mplew.write(5);
         mplew.write(minigame.getGameType());
         mplew.write(minigame.getMaxSize());
-        mplew.writeShort((short) minigame.getVisitorSlot(c.getPlayer()));
+        mplew.writeShort(minigame.getVisitorSlot(c.getPlayer()));
         PacketHelper.addCharLook(mplew, minigame.getMCOwner(), false, false);
         mplew.writeMapleAsciiString(minigame.getOwnerName());
         mplew.writeShort(minigame.getMCOwner().getJob());

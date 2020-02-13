@@ -72,7 +72,7 @@ public class BuffInformation {
         StringBuilder sb = new StringBuilder();
         File wzfile = new File(System.getProperty("wzpath") + "/Skill.wz");
         MapleDataProvider prov = MapleDataProviderFactory.getDataProvider(wzfile);
-        MapleData data = prov.getData(String.valueOf(skill / 10000) + ".img");
+        MapleData data = prov.getData(skill / 10000 + ".img");
         for (MapleData sub : data.getChildren()) {
             if (!sub.getName().equals("skill")) {
                 continue;

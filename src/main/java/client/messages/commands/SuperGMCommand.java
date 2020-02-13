@@ -130,7 +130,7 @@ public class SuperGMCommand {
     public static class 定时更变地图 extends CommandExecute {
 
         @Override
-        public int execute(final MapleClient c, String splitted[]) {
+        public int execute(final MapleClient c, String[] splitted) {
             if (splitted.length < 4) {
                 c.getPlayer().dropMessage(6, splitted[0] + " <初始地图ID> <更变后的地图ID> <时间:秒>");
                 return 0;

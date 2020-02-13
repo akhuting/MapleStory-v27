@@ -694,7 +694,7 @@ public class MTSCSPacket {
         mplew.write(CashShopOpcode.购买任务道具.getValue());
         mplew.writeInt(price);
         mplew.writeShort(quantity);
-        mplew.writeShort((short) position);
+        mplew.writeShort(position);
         mplew.writeInt(itemid);
 
         return mplew.getPacket();

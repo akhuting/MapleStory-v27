@@ -4289,10 +4289,10 @@ public class MaplePacketCreator {
         mplew.write(SendPacketOpcode.UPDATE_INNER_SKILL.getValue());
         mplew.write(1);
         mplew.write(1);
-        mplew.writeShort((short) position);
+        mplew.writeShort(position);
         mplew.writeInt(skillId);
         mplew.writeShort(skillevel);
-        mplew.writeShort((short) rank);
+        mplew.writeShort(rank);
         mplew.write(1);
 
         return mplew.getPacket();

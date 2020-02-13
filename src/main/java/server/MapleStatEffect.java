@@ -783,7 +783,7 @@ public class MapleStatEffect implements Serializable {
                 boolean itemz = false;
                 int bulletConsume = (this.info.get(MapleStatInfo.bulletConsume));
                 for (i = 0; i < use.getSlotLimit(); i++) {
-                    Item item = use.getItem((short) (byte) i);
+                    Item item = use.getItem((byte) i);
                     if ((item == null)
                             || (!ItemConstants.is飞镖道具(item.getItemId())) || (item.getQuantity() < bulletConsume)) {
                         continue;

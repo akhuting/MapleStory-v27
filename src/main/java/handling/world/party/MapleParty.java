@@ -161,7 +161,7 @@ public class MapleParty implements Serializable {
                 if (!partyBuffs.get(buffId).keySet().isEmpty()) {
                     for (Integer from : partyBuffs.get(buffId).keySet()) {
                         if (partyBuffs.get(buffId).get(from).contains(applyto)) {
-                            partyBuffs.get(buffId).get(from).remove(partyBuffs.get(buffId).get(from).indexOf(applyto));
+                            partyBuffs.get(buffId).get(from).remove((Integer) applyto);
                         }
                         if (partyBuffs.get(buffId).get(from).isEmpty()) {
                             partyBuffs.get(buffId).remove(from);
@@ -210,7 +210,7 @@ public class MapleParty implements Serializable {
                     if (partyBuffs.get(buffId).get(applyfrom).isEmpty()) {
                         partyBuffs.get(buffId).remove(applyfrom);
                     } else if (partyBuffs.get(buffId).get(applyfrom).contains(cancelby)) {
-                        partyBuffs.get(buffId).get(applyfrom).remove(partyBuffs.get(buffId).get(applyfrom).indexOf(cancelby));
+                        partyBuffs.get(buffId).get(applyfrom).remove((Integer) cancelby);
                         return applyfrom;
                     }
                 }
@@ -236,7 +236,7 @@ public class MapleParty implements Serializable {
 //                                MapleStatEffect.apply祈祷众生(chr);
                             }
                         } else if (partyBuffs.get(buffId).get(applyfrom).contains(cancelby)) {
-                            partyBuffs.get(buffId).get(applyfrom).remove(partyBuffs.get(buffId).get(applyfrom).indexOf(cancelby));
+                            partyBuffs.get(buffId).get(applyfrom).remove((Integer) cancelby);
                             MapleCharacter chr = MapleCharacter.getOnlineCharacterById(applyfrom);
                             if (chr != null) {
 //                                MapleStatEffect.apply祈祷众生(chr);

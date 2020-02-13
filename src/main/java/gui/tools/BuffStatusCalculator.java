@@ -178,7 +178,7 @@ public class BuffStatusCalculator extends javax.swing.JFrame implements GUIWindo
         }
         buffstatStr = Long.toHexString(buffstat);
         if (buffstatStr.length() > 8) {
-            buffstatStr = buffstatStr.substring(buffstatStr.length() - 8, buffstatStr.length());
+            buffstatStr = buffstatStr.substring(buffstatStr.length() - 8);
         }
         jTextField1.setText(buffstatStr);
         int value = 0;
@@ -206,7 +206,7 @@ public class BuffStatusCalculator extends javax.swing.JFrame implements GUIWindo
         byte[] code = new byte[4];
         String buffstatStr = Long.toHexString(buffstat);
         if (buffstatStr.length() > 8) {
-            buffstatStr = buffstatStr.substring(buffstatStr.length() - 8, buffstatStr.length());
+            buffstatStr = buffstatStr.substring(buffstatStr.length() - 8);
         }
         jTextField1.setText(buffstatStr);
         jTextField2.setText(String.valueOf(first));
@@ -224,7 +224,7 @@ public class BuffStatusCalculator extends javax.swing.JFrame implements GUIWindo
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

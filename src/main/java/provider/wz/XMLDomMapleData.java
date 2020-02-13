@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,7 +52,7 @@ public class XMLDomMapleData implements MapleData {
         try { 
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Reader reader = new InputStreamReader(fis, "UTF-8");
+            Reader reader = new InputStreamReader(fis, StandardCharsets.UTF_8);
             InputSource source = new InputSource(reader);
             Document document = documentBuilder.parse(source);
             this.node = document.getFirstChild();
@@ -67,7 +68,7 @@ public class XMLDomMapleData implements MapleData {
 
     @Override
     public MapleData getChildByPath(String path) {
-        String segments[] = path.split("/");
+        String[] segments = path.split("/");
         if (segments[0].equals("..")) {
             return ((MapleData) getParent()).getChildByPath(path.substring(path.indexOf("/") + 1));
         }

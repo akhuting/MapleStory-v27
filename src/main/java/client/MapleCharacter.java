@@ -1271,7 +1271,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                 ps.setByte(23, (byte) (closest != null ? closest.getId() : 0));
             }
             ps.setInt(24, this.party == null ? -1 : this.party.getId());
-            ps.setShort(25, (short) this.buddylist.getCapacity());
+            ps.setShort(25, this.buddylist.getCapacity());
             StringBuilder petz = new StringBuilder();
             if ((this.spawnPets != null) && (this.spawnPets.getSummoned())) {
                 this.spawnPets.saveToDb();
@@ -2690,7 +2690,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
     }
 
     public String getJobName() {
-        return MapleJob.getName(MapleJob.getById((int) this.getJob()));
+        return MapleJob.getName(MapleJob.getById(this.getJob()));
     }
 
     public byte getSecondGender() {
@@ -3543,9 +3543,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
             newlist.put(date.getKey(), date.getValue());
             if ((((SkillEntry) date.getValue()).skillLevel == 0) && (((SkillEntry) date.getValue()).masterlevel == 0)) {
-                if (skills.containsKey(date.getKey())) {
-                    skills.remove(date.getKey());
-                }
+                skills.remove(date.getKey());
             } else {
                 newlist.put(date.getKey(), date.getValue());
             }
@@ -4041,7 +4039,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
         }
         for (Item itemz : tobeUnlockItem) {
             itemz.setExpiration(-1L);
-            itemz.setFlag((short) (byte) (itemz.getFlag() - ItemFlag.封印.getValue()));
+            itemz.setFlag((byte) (itemz.getFlag() - ItemFlag.封印.getValue()));
             forceUpdateItem(itemz);
             dropMessage(6, new StringBuilder().append("封印道具[").append(ii.getName(itemz.getItemId())).append("]封印时间已过期。").toString());
         }
@@ -4186,9 +4184,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
         }
         this.controlledLock.writeLock().lock();
         try {
-            if (this.controlled.contains(monster)) {
-                this.controlled.remove(monster);
-            }
+            this.controlled.remove(monster);
         } finally {
             this.controlledLock.writeLock().unlock();
         }
@@ -4688,7 +4684,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
      * @param broadcast
      */
     public void spawnPet(byte slot, boolean lead, boolean broadcast) {
-        Item item = getInventory(MapleInventoryType.CASH).getItem((short) slot);
+        Item item = getInventory(MapleInventoryType.CASH).getItem(slot);
         if ((item == null) || (!ItemConstants.isPet(item.getItemId()))) {
             dropMessage(1, "召唤失败，请你重新登陆");
             client.getSession().write(MaplePacketCreator.enableActions());
@@ -4729,7 +4725,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             getSpawnPet().setSummoned(0);
             getSpawnPet().saveToDb();
         }
-        this.client.getSession().write(PetPacket.updatePet(pet, getInventory(MapleInventoryType.CASH).getItem((short) (byte) pet.getInventoryPosition()), true));
+        this.client.getSession().write(PetPacket.updatePet(pet, getInventory(MapleInventoryType.CASH).getItem((byte) pet.getInventoryPosition()), true));
         if (this.map != null) {
             this.map.broadcastMessage(this, PetPacket.showPet(this, pet, true, hunger), true);
         }
@@ -5090,27 +5086,27 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
     public int getEquipId(byte slot) {
         MapleInventory equip = getInventory(MapleInventoryType.EQUIP);
-        return equip.getItem((short) slot).getItemId();
+        return equip.getItem(slot).getItemId();
     }
 
     public int getUseId(byte slot) {
         MapleInventory use = getInventory(MapleInventoryType.USE);
-        return use.getItem((short) slot).getItemId();
+        return use.getItem(slot).getItemId();
     }
 
     public int getSetupId(byte slot) {
         MapleInventory setup = getInventory(MapleInventoryType.SETUP);
-        return setup.getItem((short) slot).getItemId();
+        return setup.getItem(slot).getItemId();
     }
 
     public int getCashId(byte slot) {
         MapleInventory cash = getInventory(MapleInventoryType.CASH);
-        return cash.getItem((short) slot).getItemId();
+        return cash.getItem(slot).getItemId();
     }
 
     public int getEtcId(byte slot) {
         MapleInventory etc = getInventory(MapleInventoryType.ETC);
-        return etc.getItem((short) slot).getItemId();
+        return etc.getItem(slot).getItemId();
     }
 
     public byte getBuddyCapacity() {
@@ -5175,9 +5171,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
     }
 
     public void removeCooldown(int skillId) {
-        if (this.coolDowns.containsKey(skillId)) {
-            this.coolDowns.remove(skillId);
-        }
+        this.coolDowns.remove(skillId);
     }
 
     public boolean skillisCooling(int skillId) {
@@ -6059,7 +6053,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
         ch.removePlayer(this);
         this.client.updateLoginState(3, this.client.getSessionIPAddress());
         String s = this.client.getSessionIPAddress();
-        LoginServer.addIPAuth(s.substring(s.indexOf(47) + 1, s.length()));
+        LoginServer.addIPAuth(s.substring(s.indexOf(47) + 1));
         this.client.getSession().write(MaplePacketCreator.getChannelChange(this.client, Integer.parseInt(toch.getIP().split(":")[1])));
         saveToDB(false, false);
         getMap().removePlayer(this);
@@ -7534,9 +7528,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
     public void hasGiveLove(MapleCharacter to) {
         this.lastlovetime = System.currentTimeMillis();
-        if (this.lastdayloveids.containsKey(to.getId())) {
-            this.lastdayloveids.remove(to.getId());
-        }
+        this.lastdayloveids.remove(to.getId());
         this.lastdayloveids.put(to.getId(), System.currentTimeMillis());
         try {
             try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO lovelog (characterid, characterid_to) VALUES (?, ?)")) {

@@ -116,7 +116,7 @@ public class WZFile implements MapleDataProvider {
     }
 
     public WZIMGFile getImgFile(String path) throws IOException {
-        String segments[] = path.split("/");
+        String[] segments = path.split("/");
         WZDirectoryEntry dir = root;
         for (int x = 0; x < segments.length - 1; x++) {
             dir = (WZDirectoryEntry) dir.getEntry(segments[x]);

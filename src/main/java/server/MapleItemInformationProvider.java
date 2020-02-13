@@ -340,7 +340,7 @@ public class MapleItemInformationProvider {
 
     protected MapleData getItemData(int itemId) {
         MapleData ret = null;
-        String idStr = "0" + String.valueOf(itemId);
+        String idStr = "0" + itemId;
         MapleDataDirectoryEntry root = this.itemData.getRoot();
         for (MapleDataDirectoryEntry topDir : root.getSubdirectories()) {
             for (MapleDataFileEntry iFile : topDir.getFiles()) {

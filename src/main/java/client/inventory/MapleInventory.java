@@ -254,7 +254,7 @@ public class MapleInventory implements Iterable<Item>, Serializable {
                 free = (byte) (free + 1);
             }
         }
-        return (short) free;
+        return free;
     }
 
     public MapleInventoryType getType() {

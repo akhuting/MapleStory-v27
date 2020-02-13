@@ -1174,7 +1174,7 @@ public class GMCommand {
     public static class 禁言 extends CommandExecute {
 
         @Override
-        public int execute(MapleClient c, String splitted[]) {
+        public int execute(MapleClient c, String[] splitted) {
             if (splitted.length < 2) {
                 c.getPlayer().dropMessage(6, splitted[0] + " <玩家名字>");
                 return 0;
@@ -1188,7 +1188,7 @@ public class GMCommand {
     public static class 取消禁言 extends CommandExecute {
 
         @Override
-        public int execute(MapleClient c, String splitted[]) {
+        public int execute(MapleClient c, String[] splitted) {
             if (splitted.length < 2) {
                 c.getPlayer().dropMessage(6, splitted[0] + " <玩家名字>");
                 return 0;
@@ -1202,7 +1202,7 @@ public class GMCommand {
     public static class 地图禁言 extends CommandExecute {
 
         @Override
-        public int execute(MapleClient c, String splitted[]) {
+        public int execute(MapleClient c, String[] splitted) {
             for (MapleCharacter chr : c.getPlayer().getMap().getCharactersThreadsafe()) {
                 chr.canTalk(false);
             }
@@ -1213,7 +1213,7 @@ public class GMCommand {
     public static class 取消地图禁言 extends CommandExecute {
 
         @Override
-        public int execute(MapleClient c, String splitted[]) {
+        public int execute(MapleClient c, String[] splitted) {
             for (MapleCharacter chr : c.getPlayer().getMap().getCharactersThreadsafe()) {
                 chr.canTalk(true);
             }
@@ -1253,13 +1253,13 @@ public class GMCommand {
             int itemid = Integer.parseInt(splitted[2]);
             MapleInventoryType type = ItemConstants.getInventoryType(itemid);
             for (Item item : chr.getInventory(type).listById(itemid)) {
-                item.setFlag((short) (byte) (item.getFlag() | ItemFlag.封印.getValue()));
+                item.setFlag((byte) (item.getFlag() | ItemFlag.封印.getValue()));
                 chr.forceUpdateItem(item);
             }
             if (type == MapleInventoryType.EQUIP) {
                 type = MapleInventoryType.EQUIPPED;
                 for (Item item : chr.getInventory(type).listById(itemid)) {
-                    item.setFlag((short) (byte) (item.getFlag() | ItemFlag.封印.getValue()));
+                    item.setFlag((byte) (item.getFlag() | ItemFlag.封印.getValue()));
                     chr.forceUpdateItem(item);
                 }
             }

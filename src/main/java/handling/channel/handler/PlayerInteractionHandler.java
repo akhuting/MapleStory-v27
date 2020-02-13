@@ -90,7 +90,7 @@ public class PlayerInteractionHandler {
                         chr.getMap().addMapObject(game);
                         game.update();
                     } else if (chr.getMap().allowPersonalShop()) {
-                        Item shop = c.getPlayer().getInventory(MapleInventoryType.CASH).getItem((short) (byte) slea.readShort());
+                        Item shop = c.getPlayer().getInventory(MapleInventoryType.CASH).getItem((byte) slea.readShort());
                         if ((shop == null) || (shop.getQuantity() <= 0) || (shop.getItemId() != slea.readInt()) || (c.getPlayer().getMapId() < 910000001) || (c.getPlayer().getMapId() > 910000022)) {
                             return;
                         }
@@ -262,7 +262,7 @@ public class PlayerInteractionHandler {
             case 设置物品_002:
             case 设置物品_003:
                 MapleInventoryType ivType = MapleInventoryType.getByType(slea.readByte());
-                Item item = chr.getInventory(ivType).getItem((short) (byte) slea.readShort());
+                Item item = chr.getInventory(ivType).getItem((byte) slea.readShort());
                 short quantity = slea.readShort();
                 byte targetSlot = slea.readByte();
                 if (chr.getTrade() == null || item == null) {
@@ -313,7 +313,7 @@ public class PlayerInteractionHandler {
                 if ((shop == null) || (!shop.isOwner(chr)) || ((shop instanceof MapleMiniGame))) {
                     return;
                 }
-                Item ivItem = chr.getInventory(type).getItem((short) slot);
+                Item ivItem = chr.getInventory(type).getItem(slot);
                 MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                 if (ivItem == null) {
                     break;
@@ -352,11 +352,11 @@ public class PlayerInteractionHandler {
                         return;
                     }
                     if ((ItemConstants.is飞镖道具(ivItem.getItemId())) || (ItemConstants.is子弹道具(ivItem.getItemId()))) {
-                        MapleInventoryManipulator.removeFromSlot(c, type, (short) slot, ivItem.getQuantity(), true);
+                        MapleInventoryManipulator.removeFromSlot(c, type, slot, ivItem.getQuantity(), true);
                         Item sellItem = ivItem.copy();
                         shop.addItem(new MaplePlayerShopItem(sellItem, (short) 1, price));
                     } else {
-                        MapleInventoryManipulator.removeFromSlot(c, type, (short) slot, bundles_perbundle, true);
+                        MapleInventoryManipulator.removeFromSlot(c, type, slot, bundles_perbundle, true);
                         Item sellItem = ivItem.copy();
                         sellItem.setQuantity(perBundle);
                         shop.addItem(new MaplePlayerShopItem(sellItem, bundles, price));

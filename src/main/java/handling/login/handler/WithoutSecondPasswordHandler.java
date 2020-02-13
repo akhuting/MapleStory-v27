@@ -44,7 +44,7 @@ public class WithoutSecondPasswordHandler {
             c.getIdleTask().cancel(true);
         }
         String s = c.getSessionIPAddress();
-        LoginServer.putLoginAuth(charId, s.substring(s.indexOf('/') + 1, s.length()), c.getTempIP(), c.getChannel());
+        LoginServer.putLoginAuth(charId, s.substring(s.indexOf('/') + 1), c.getTempIP(), c.getChannel());
         c.updateLoginState(MapleClient.LOGIN_SERVER_TRANSITION, s);
         c.getSession().write(MaplePacketCreator.getServerIP(c, Integer.parseInt(ChannelServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
     }

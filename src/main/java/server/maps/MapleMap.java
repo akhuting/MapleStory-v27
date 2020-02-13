@@ -1629,7 +1629,7 @@ public final class MapleMap {
             List toSpawnPos = new ArrayList(this.spawnPoints);
             for (MapleMapObject reactor1l : getAllReactorsThreadsafe()) {
                 MapleReactor reactor2l = (MapleReactor) reactor1l;
-                if ((!toSpawnPos.isEmpty()) && (toSpawnPos.contains(reactor2l.getPosition()))) {
+                if ((!toSpawnPos.isEmpty())) {
                     toSpawnPos.remove(reactor2l.getPosition());
                 }
 
